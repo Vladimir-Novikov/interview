@@ -8,7 +8,7 @@ def num_input():
     exit = False
     while not exit:
         numbers = input("Введите 2 целых числа через пробел (или q для выхода): ").split()[:2]
-        if numbers[0] == "q" or numbers[0] == "й":
+        if numbers[0] in ["q", "й"]:
             exit = True
             break
         if len(numbers) < 2:
