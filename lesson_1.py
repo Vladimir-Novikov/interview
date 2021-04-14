@@ -5,11 +5,12 @@ def multiplication_table(a, b):
 
 
 def num_input():
-    exit = False
-    while not exit:
+    # exit = False     лишнее условие
+    while True:  # замена exit на True
         numbers = input("Введите 2 целых числа через пробел (или q для выхода): ").split()[:2]
+        # if numbers[0] == "q" or numbers[0] == "й": замена на то, входит ли значение в массив
         if numbers[0] in ["q", "й"]:
-            exit = True
+            # exit = True
             break
         if len(numbers) < 2:
             print("Нужно ввести 2 числа")
