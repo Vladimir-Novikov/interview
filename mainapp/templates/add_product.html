@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>{{ page_header }}</title>
+{% endblock %}
+
+{% block add %}
+
+<ul class="menu">
+    <li><a href="/goods/">продукты</a></li>
+    <li><a href="/admin/">админка</a></li>
+</ul>
+<h1>{{ page_header }}</h1>
+<form>
+    <fieldset>
+        <legend>Добавить товар</legend>
+        <p>Название: <input name="name"></p>
+        <p>Цена: <input name="name"></p>
+        <p>Поставщик: <input name="name"></p>
+        <p><input type="submit" value="Добавить"></p>
+    </fieldset>
+</form>
+
+<form action="/goods/">
+    <button type="submit">Список товаров</button>
+</form>
+
+
+{% endblock %}
