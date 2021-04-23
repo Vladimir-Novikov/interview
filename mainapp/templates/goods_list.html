@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>{{ page_header }}</title>
+{{ page_header }}
 {% endblock %}
 
 
@@ -14,7 +14,10 @@
 </ul>
 
 <h1>{{ page_header }}</h1>
-<table>
+
+
+
+<table id='table'>
     <tr>
         <th>Название</th>
         <th>Цена</th>
@@ -36,5 +39,16 @@
 </form>
 
 
+<button class='button' type="submit">тестовая кнопка</button>
 
+
+<div class='modal'>
+
+</div>
+
+
+{% endblock %}
+
+{% block additional_js %}
+<script src="{% static 'code.js' %}"></script>
 {% endblock %}

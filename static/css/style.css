@@ -16,3 +16,20 @@ button{
     margin-top: 20px;
     
 }
+
+/* #modal{
+    display: none;
+} */
+
+.modal {
+    width: 70%;
+    background: #EEE;
+    position: absolute;
+    top: 70px;
+    left: 65px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 5px 5px 10px #555;
+    display: none;
+}
