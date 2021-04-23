@@ -1,8 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
 
 from .models import GoodItem
+from .forms import GoodItemForm
 
 
 def goods_list(request):
@@ -16,11 +17,16 @@ def goods_list(request):
 
 
 def add_product(request):
-    all_goods = GoodItem.objects.all()
-    # goods_str = ", ".join(str(good) for good in all_goods)
-    context = {
-        "page_header": "Добавление товаров",
-    }
+    error = ""
+    if request.method == "POST":
+        form = GoodItemForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect("/")
+        else:
+            error = "Форма заполнена некорректно"
+    form = GoodItemForm()
+    context = {"page_header": "Добавление товаров", "form": form, "error": error}
     return render(request, template_name="add_product.html", context=context)
 
 
