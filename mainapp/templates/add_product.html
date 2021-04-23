@@ -8,21 +8,23 @@
 {% block add %}
 
 <ul class="menu">
-    <li><a href="/goods/">продукты</a></li>
+    <li><a href="/">продукты</a></li>
     <li><a href="/admin/">админка</a></li>
 </ul>
 <h1>{{ page_header }}</h1>
-<form>
-    <fieldset>
-        <legend>Добавить товар</legend>
-        <p>Название: <input name="name"></p>
-        <p>Цена: <input name="name"></p>
-        <p>Поставщик: <input name="name"></p>
-        <p><input type="submit" value="Добавить"></p>
-    </fieldset>
-</form>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}<br>
+        {{ form.modified_at }}<br>
+        {{ form.price }}<br>
+        {{ form.vendor }}<br>
+        <span>{{ error }}</span>
+        <button type="submit">Добавить товар</button>
+    </form>
+</div>
 
-<form action="/goods/">
+<form action="/">
     <button type="submit">Список товаров</button>
 </form>
 
