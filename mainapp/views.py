@@ -1,19 +1,30 @@
+from django import forms
 from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, TemplateView
-
+from django.urls import reverse
 from .models import GoodItem
 from .forms import GoodItemForm
+from django.core import serializers
 
 
-def goods_list(request):
+def index(request):
     all_goods = GoodItem.objects.all()
-    # goods_str = ", ".join(str(good) for good in all_goods)
-    context = {
-        "page_header": "Товары",
-        "goods": all_goods,
-    }
-    return render(request, template_name="goods_list.html", context=context)
+    if request.method == "POST":
+        form = GoodItemForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse("index"))
+    else:
+        form = GoodItemForm()
+    context = {"page_header": "Товары", "goods": all_goods, "form": form}
+    return render(request, template_name="index.html", context=context)
+
+
+# def ajax_handler(request):
+#     all_goods = GoodItem.objects.all()
+#     data = serializers.serialize("json", all_goods)
+#     return HttpResponse(data, content_type="text/html")
 
 
 def add_product(request):
@@ -26,26 +37,9 @@ def add_product(request):
         else:
             error = "Форма заполнена некорректно"
     form = GoodItemForm()
-    context = {"page_header": "Добавление товаров", "form": form, "error": error}
+    context = {
+        "page_header": "Добавление товаров",
+        "form": form,
+        "error": error,
+    }
     return render(request, template_name="add_product.html", context=context)
-
-
-class GoodList(TemplateView):
-    template_name = "goods_list.html"
-
-    def get_context_data(self, **kwargs):
-        all_goods = GoodItem.objects.all()
-        context = super().get_context_data(**kwargs)
-        context.update(
-            {
-                "page_header": "Все товары",
-                "goods": all_goods,
-            }
-        )
-        return context
-
-
-class GoodsListView(ListView):
-    template_name = "goods_list.html"
-    model = GoodItem
-    context_object_name = "goods"

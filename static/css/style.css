@@ -1,5 +1,6 @@
 table{
 border-collapse:collapse;
+margin-left: 15px;
 }
 td{
 border: 1px solid black;
@@ -17,12 +18,8 @@ button{
     
 }
 
-/* #modal{
-    display: none;
-} */
-
-.modal {
-    width: 70%;
+.container {
+    /* width: 40%; */
     background: #EEE;
     position: absolute;
     top: 70px;
@@ -32,4 +29,11 @@ button{
     padding: 30px;
     box-shadow: 5px 5px 10px #555;
     display: none;
+}
+
+.close-popup{
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-size: 16px;
 }

@@ -5,19 +5,22 @@
 {{ page_header }}
 {% endblock %}
 
+{% block css %}
+<link rel='stylesheet' href="{% static 'css/style.css' %}">
+{% endblock %}
+
 
 {% block content %}
 
 <ul class="menu">
-    <li><a href="/add/">добавить продукты</a></li>
+    <!-- <li><a href="/add/">добавить продукты </a></li> -->
     <li><a href="/admin/">админка</a></li>
 </ul>
-
 <h1>{{ page_header }}</h1>
 
 
 
-<table id='table'>
+<table>
     <tr>
         <th>Название</th>
         <th>Цена</th>
@@ -33,16 +36,16 @@
     </tr>
     {% endfor %}
 </table>
+<button class='popup'>Добавить новый товар</button>
+<div class="container">
+    <button class='close-popup'>закрыть</button>
 
-<form action="/add/">
-    <button type="submit">Добавить товар</button>
-</form>
-
-
-<button class='button' type="submit">тестовая кнопка</button>
-
-
-<div class='modal'>
+    <h3>Описание товара</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="отправить">
+    </form>
 
 </div>
 
@@ -50,5 +53,5 @@
 {% endblock %}
 
 {% block additional_js %}
-<script src="{% static 'code.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
