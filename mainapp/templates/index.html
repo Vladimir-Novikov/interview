@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ page_header }}
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href="{% static 'css/style.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<ul class="menu">
+    <!-- <li><a href="/add/">добавить продукты </a></li> -->
+    <li><a href="/admin/">админка</a></li>
+</ul>
+<h1>{{ page_header }}</h1>
+
+
+
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Поставщик</th>
+        <th>Дата создания</th>
+    </tr>
+    {% for item in goods %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.vendor }}</td>
+        <td>{{ item.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button class='popup'>Добавить новый товар</button>
+<div class="container">
+    <button class='close-popup'>закрыть</button>
+
+    <h3>Описание товара</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="отправить">
+    </form>
+
+</div>
+
+
+{% endblock %}
+
+{% block additional_js %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

@@ -13,11 +13,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="GoodItem",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("title", models.CharField(max_length=255, verbose_name="Название")),
-                ("created_at", models.DateTimeField(auto_now_add=True, verbose_name="Создано")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=255, verbose_name="Название"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Создано"),
+                ),
                 ("modified_at", models.DateTimeField(verbose_name="Изменено")),
-                ("price", models.PositiveIntegerField(default=0, verbose_name="Цена")),
+                (
+                    "price",
+                    models.PositiveIntegerField(default=0, verbose_name="Цена"),
+                ),
                 ("vendor", models.TextField(verbose_name="Поставщик")),
             ],
             options={

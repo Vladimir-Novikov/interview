@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-<title>{{ page_header }}</title>
+{{ page_header }}
 {% endblock %}
 
 {% block add %}
@@ -30,3 +30,7 @@
 
 
 {% endblock %}
+<!-- 
+{% block additional_js %}
+<script src="{% static 'main.js' %}"></script>
+{% endblock %} -->
