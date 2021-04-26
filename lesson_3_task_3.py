@@ -13,6 +13,12 @@ def my_dict(keys, values):
     return new_dict
 
 
-print("*** Вариант 1 - ключей меньше, чем значений: ***\n", my_dict(key_list_1, value_list_1))
+print(
+    "*** Вариант 1 - ключей меньше, чем значений: ***\n",
+    my_dict(key_list_1, value_list_1),
+)
 
-print("*** Вариант 2 - ключей больше, чем значений: *** \n", my_dict(key_list_2, value_list_2))
+print(
+    "*** Вариант 2 - ключей больше, чем значений: *** \n",
+    my_dict(key_list_2, value_list_2),
+)

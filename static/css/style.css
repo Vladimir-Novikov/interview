@@ -1,5 +1,6 @@
 table{
 border-collapse:collapse;
+margin-left: 15px;
 }
 td{
 border: 1px solid black;
@@ -15,4 +16,24 @@ border-radius: 10px 10px 0 0;
 button{
     margin-top: 20px;
     
+}
+
+.container {
+    /* width: 40%; */
+    background: #EEE;
+    position: absolute;
+    top: 70px;
+    left: 65px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 30px;
+    box-shadow: 5px 5px 10px #555;
+    display: none;
+}
+
+.close-popup{
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    font-size: 16px;
 }

@@ -46,7 +46,10 @@ print(
 )
 instance_1.set_price(4599)  # установка цены
 print("Цена после установки новой цены: ", instance_1._price)
-print("Цена после установки новой цены: ", ItemDiscountReport.get_parent_data(instance_1))
+print(
+    "Цена после установки новой цены: ",
+    ItemDiscountReport.get_parent_data(instance_1),
+)
 instance_2 = ItemDiscountReport("холодильник", 25499, 10)
 instance_3 = ItemDiscountReport("холодильник", 25499, 95)
 print("Цена со скидкой: ", instance_2)
