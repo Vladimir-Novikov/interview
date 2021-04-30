@@ -76,8 +76,16 @@ cur.execute(
 
 conn.commit()
 
+cur.execute("insert into units (unit) values ('шт');")
+cur.execute("insert into units (unit) values ('коробка');")
 
-categories = [("Процессоры", "Для настольных ПК"), ("Блок питания", "Выносные")]
+
+categories = [
+    ("Процессоры", "Для настольных ПК"),
+    ("Блок питания", "Выносные"),
+    ("Клавиатуры", "Для ввода текста"),
+    ("Гарнитуры", "Игровые наушники"),
+]
 cur.executemany("INSERT INTO categories VALUES(?, ?);", categories)
 
 conn.commit()
@@ -85,17 +93,19 @@ conn.commit()
 
 cur.execute("insert into goods (good_name, good_unit, good_cat) values ('Процессор AMD-1', 'шт', 'процессоры');")
 cur.execute("insert into goods (good_name, good_unit, good_cat) values ('Процессор AMD-2', 'шт', 'процессоры');")
+cur.execute("insert into goods (good_name, good_unit, good_cat) values ('atx-600', 'шт', 'Блок питания');")
+cur.execute("insert into goods (good_name, good_unit, good_cat) values ('defender', 'шт', 'Клавиатуры');")
 
 
 conn.commit()
 
-cur.execute("SELECT * FROM goods;")
-results = cur.fetchall()
-print(results)
+# cur.execute("SELECT * FROM goods;")
+# results = cur.fetchall()
+# print(results)
 
 
-cur.execute("SELECT * FROM categories;")
-results = cur.fetchall()
-print(results)
+# cur.execute("SELECT * FROM categories;")
+# results = cur.fetchall()
+# print(results)
 
 conn.close()
